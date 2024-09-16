@@ -1,0 +1,27 @@
+version: "3.9"
+
+networks:
+    web:
+        external: true
+    redis:
+        external: true
+    mysql:
+        external: true
+services:
+  api:
+    container_name: $CONTAINER_NAME
+    image: $IMAGE:$CI_COMMIT_SHORT_SHA
+    restart: always
+    tty: true
+    working_dir: /app
+    volumes:
+      - ./app.env:/app/.env
+      - ./logs:/app/storage/logs
+      - ./storage:/app/storage/app
+    ports:  
+      - "3030:80"
+    networks:
+      - web
+      - redis
+      - mysql
+
