@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -125,34 +129,62 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+     const POOLS_STATUS = [
+        'bronze' => '1%',
+        'silver' => '1%',
+        'gold' => '1%',
+        'platinum' => '3%',
+        'founder1' => '2%',
+        'founder2' => '2%',
+        'founder3' => '2%',
+        'founder4' => '2%',
+    ];
+
+
     protected $fillable = [
-        'name',
+        'login',
         'email',
-        'password',
+        'email_verified_at',
+        'phone_verified_at',
+        'telegram_id',
+        'phone',
+        'avatar',
+        'name',
+        'surname',
+        'gender',
+        'event_country',
+        'event_city',
+        'role_id',
+        'status_id',
+        'telegram_name',
+        'show_welcome',
+        'message',
+        'active_queue',
+        'wallet',
+        'commission', // Others statuses (0.3 - basic, 0.5 - bornze, 0.7 - silver, 1 - gold and platinum)
+        'token_stacking',
+        'token_vesting',
+        'security_question',
+        'founder_status', // Osnovatel
+        'referal_invited',
+        'telegram_policy',
+        'level_tiered_system',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+
     protected $hidden = [
-        'password',
+        'code',
         'remember_token',
+        'password',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+
+
     protected $casts = [
+        'phone_verified_at' => 'datetime',
         'email_verified_at' => 'datetime',
+        'security_question' => 'array',
+        'telegram_policy' => UserTelegramPolicyEnum::class,
     ];
 
     /**
