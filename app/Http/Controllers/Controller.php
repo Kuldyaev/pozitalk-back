@@ -2,6 +2,21 @@
 
 namespace App\Http\Controllers;
 
+
+/**
+ * @OA\PathItem(
+ *      path="/api/v1/",
+ * ),
+ * @OA\Components(
+ *     @OA\SecurityScheme(
+ *         securityScheme="bearerAuth",
+ *         type="http",
+ *         scheme="bearer"
+ *     )
+ * ),
+ */
+
+
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -22,12 +37,8 @@ use OpenApi\Attributes\Tag;
 )]
 
 #[Server(
-    '/api/v2',
-    'Relative V2'
-)]
-#[Server(
     '/api/v1',
-    'Relative V1'
+    'relative V1'
 )]
 
 

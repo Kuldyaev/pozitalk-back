@@ -7,16 +7,12 @@
     },
     "servers": [
         {
-            "url": "/api/v2",
-            "description": "Relative V2"
-        },
-        {
             "url": "/api/v1",
-            "description": "Relative V1"
+            "description": "relative V1"
         }
     ],
     "paths": {
-        "/api/": {},
+        "/api/v1/": {},
         "/user/profile-info": {
             "patch": {
                 "tags": [
@@ -98,7 +94,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
@@ -341,6 +342,12 @@
                 "xml": {
                     "name": "UserStatus"
                 }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
             }
         }
     },

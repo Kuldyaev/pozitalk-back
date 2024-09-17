@@ -21,6 +21,7 @@ class UserUpdateProfileInfoController extends Controller
         operationId: 'UserProfileInfoUpdate',
         path: '/user/profile-info',
         summary: 'Update user profile information',
+        security: [['bearerAuth' => []]],
         requestBody: new RequestBody(
             content: new JsonContent(
                 properties: [
