@@ -1,6 +1,9 @@
 # Vbalance backend RestAPI
+
 ---
+
 ### Установка
+
 -   Установить зависимости бэка: `composer install`
 -   Сгенерировать APP_KEY: `php artisan key:generate`
 -   Установить зависимости фронта: `npm i`
@@ -14,25 +17,10 @@
 
 ---
 
+### Подключить Swagger к Laravel
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-   Установить пакет L5Swagger `composer require "darkaonline/l5-swagger"`
+-   Добавить Swagger в проект `php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"`
 
 ### Установка через docker:
 
@@ -49,4 +37,3 @@
 -   Остановить докер `./vendor/bin/sail down`
 -   Сбросить БД и запустить сидеры: `./vendor/bin/sail artisan migrate:fresh --seed`
 -   Запустить миграции БД `./vendor/bin/sail artisan migrate`
-
