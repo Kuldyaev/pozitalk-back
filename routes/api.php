@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\UserController;
 
 use App\Http\Controllers\V1\AuthController;
 /*
@@ -16,16 +17,11 @@ use App\Http\Controllers\V1\AuthController;
 */
 
 
-Route::group(['middleware' => 'api','prefix' => 'auth'], function () {
-    // Route::post('/login', [AuthController::class, 'login'])->name('login');
-    // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    // Route::post('/refresh', [AuthController::class, 'refresh']);
-    // Route::get('/me', [AuthController::class, 'me'])->middleware(['jwt.auth', 'is.banned']);
+Route::group(['middleware' => 'api','prefix' => 'user'], function () {
 
-    // Route::post('login', 'AuthController@login');
-    // Route::post('logout', 'AuthController@logout');
-    // Route::post('refresh', 'AuthController@refresh');
-    // Route::post('me', 'AuthController@me');
+     Route::get('/me', [UserController::class, 'me'])->name('user.me');
+
+
 
 });
 

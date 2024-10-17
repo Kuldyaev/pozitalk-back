@@ -31,13 +31,13 @@ use OpenApi\Attributes\Server;
 use OpenApi\Attributes\Tag;
 
 #[Info(
-    version: 2,
+    version: 1,
     title: "VBALANCE Documentation",
     description: "Documentation for VBALANCE"
 )]
 
 #[Server(
-    '/api/v1',
+    '/api',
     'relative V1'
 )]
 

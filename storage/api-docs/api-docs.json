@@ -3,11 +3,11 @@
     "info": {
         "title": "VBALANCE Documentation",
         "description": "Documentation for VBALANCE",
-        "version": "2"
+        "version": "1"
     },
     "servers": [
         {
-            "url": "/api/v1",
+            "url": "/api",
             "description": "relative V1"
         }
     ],
@@ -100,6 +100,59 @@
                         "bearerAuth": []
                     }
                 ]
+            }
+        },
+        "/user/me": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "getMe",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/personal-link": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Персональная ссылка.",
+                "operationId": "87de852b759ab51d49030c01e135a1cc",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/profile/statuses-and-founders": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Карьерный план и статусы",
+                "operationId": "461343dc802cd9e75f20738a44a4c21c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
             }
         }
     },
@@ -352,6 +405,10 @@
         }
     },
     "tags": [
+        {
+            "name": "User",
+            "description": "Пользователь"
+        },
         {
             "name": "User.Profile",
             "description": "Настройки профиля"
