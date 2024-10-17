@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "VBALANCE Documentation",
-        "description": "Documentation for VBALANCE",
+        "title": "Pozitalk Documentation",
+        "description": "Documentation for POZITALK",
         "version": "1"
     },
     "servers": [
@@ -13,6 +13,32 @@
     ],
     "paths": {
         "/api/v1/": {},
+        "/knowledges": {
+            "get": {
+                "tags": [
+                    "Knowledge"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getAllKnowledges",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Knowledge"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/user/profile-info": {
             "patch": {
                 "tags": [
@@ -119,7 +145,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/user/personal-link": {
@@ -158,152 +189,59 @@
     },
     "components": {
         "schemas": {
-            "Round": {
-                "title": "Round",
-                "description": "Раунд (круг)",
+            "Knowledge": {
+                "title": "Knowledge",
+                "description": "Knowledge model",
                 "properties": {
                     "id": {
-                        "title": "ID",
-                        "description": "ID",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "account_id": {
-                        "title": "account_id",
-                        "description": "account_id",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "round_type_id": {
-                        "title": "round_type_id",
-                        "description": "round_type_id",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "active": {
-                        "title": "active",
-                        "description": "active",
-                        "format": "boolean",
-                        "example": true
-                    },
-                    "verification_code": {
-                        "title": "verification_code",
-                        "description": "verification_code",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "price": {
-                        "title": "price",
-                        "description": "price",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "created_at": {
-                        "title": "created_at",
-                        "description": "дата создания записи",
-                        "format": "date",
-                        "example": "2019-05-17"
-                    },
-                    "updated_at": {
-                        "title": "updated_at",
-                        "description": "дата изменения записи",
-                        "format": "date",
-                        "example": "2019-05-17"
-                    }
-                },
-                "type": "object",
-                "xml": {
-                    "name": "Round"
-                }
-            },
-            "RoundGiver": {
-                "title": "RoundGiver",
-                "description": "Даритель раунда",
-                "properties": {
-                    "id": {
-                        "title": "ID",
-                        "description": "ID",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "status_id": {
-                        "title": "status_id",
-                        "description": "status_id",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "account_id": {
-                        "title": "account_id",
-                        "description": "account_id",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "start": {
-                        "title": "start",
-                        "description": "время когда появился даритель",
-                        "format": "date",
-                        "example": "2019-05-17"
-                    }
-                },
-                "type": "object",
-                "xml": {
-                    "name": "RoundGiver"
-                }
-            },
-            "RoundGiverStatus": {
-                "title": "RoundGiverStatus",
-                "description": "Статус дарителя в раунде",
-                "properties": {
-                    "id": {
-                        "title": "ID",
-                        "description": "ID",
-                        "format": "int64",
-                        "example": 1
+                        "description": "Knowledge ID",
+                        "type": "integer",
+                        "format": "int64"
                     },
                     "title": {
-                        "title": "title",
-                        "description": "title",
-                        "format": "string",
-                        "example": "test"
+                        "description": "Title of article",
+                        "type": "string"
+                    },
+                    "author": {
+                        "description": "Author of Acticle",
+                        "type": "string"
+                    },
+                    "date": {
+                        "description": "date writing acticle",
+                        "type": "string"
+                    },
+                    "image": {
+                        "description": "cover base64",
+                        "type": "text"
+                    },
+                    "description": {
+                        "description": "short description",
+                        "type": "text"
+                    },
+                    "text": {
+                        "description": "formatted text ",
+                        "type": "text"
+                    },
+                    "time_publish": {
+                        "description": "time for publishing ",
+                        "type": "string"
+                    },
+                    "date_publish": {
+                        "description": "date for publishing ",
+                        "type": "string"
+                    },
+                    "age16_restriction": {
+                        "description": "16+",
+                        "type": "boolean"
+                    },
+                    "age18_restriction": {
+                        "description": "18+",
+                        "type": "boolean"
                     }
                 },
                 "type": "object",
                 "xml": {
-                    "name": "RoundGiverStatus"
-                }
-            },
-            "RoundType": {
-                "title": "RoundType",
-                "description": "Тип раунда",
-                "properties": {
-                    "id": {
-                        "title": "ID",
-                        "description": "ID",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "price": {
-                        "title": "price",
-                        "description": "price",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "count_rounds": {
-                        "title": "count_rounds",
-                        "description": "count_rounds",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "count_givers": {
-                        "title": "count_givers",
-                        "description": "count_givers",
-                        "format": "int64",
-                        "example": 1
-                    }
-                },
-                "type": "object",
-                "xml": {
-                    "name": "RoundType"
+                    "name": "Knowledge"
                 }
             },
             "User": {
@@ -405,6 +343,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Knowledge",
+            "description": "База знаний"
+        },
         {
             "name": "User",
             "description": "Пользователь"

@@ -32,8 +32,8 @@ use OpenApi\Attributes\Tag;
 
 #[Info(
     version: 1,
-    title: "VBALANCE Documentation",
-    description: "Documentation for VBALANCE"
+    title: "Pozitalk Documentation",
+    description: "Documentation for POZITALK"
 )]
 
 #[Server(
@@ -43,8 +43,10 @@ use OpenApi\Attributes\Tag;
 
 
 #[Tag(name: "Authentification", description: "Аутентификация пользователя")]
+#[Tag(name: "Knowledge", description: "База знаний")]
 #[Tag(name: "User", description: "Пользователь")]
 #[Tag(name: "User.Profile", description: "Настройки профиля")]
+
 #[Tag(name: "User.Statistic", description: "Статистика пользователя")]
 #[Tag(name: "User.Authentification", description: "Настройки аутентификации")]
 
