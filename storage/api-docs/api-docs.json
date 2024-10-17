@@ -1,0 +1,417 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "VBALANCE Documentation",
+        "description": "Documentation for VBALANCE",
+        "version": "1"
+    },
+    "servers": [
+        {
+            "url": "/api",
+            "description": "relative V1"
+        }
+    ],
+    "paths": {
+        "/api/v1/": {},
+        "/user/profile-info": {
+            "patch": {
+                "tags": [
+                    "User.Profile"
+                ],
+                "summary": "Update user profile information",
+                "operationId": "UserProfileInfoUpdate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Имя",
+                                        "type": "string"
+                                    },
+                                    "surname": {
+                                        "description": "Фамилия",
+                                        "type": "string"
+                                    },
+                                    "event_country": {
+                                        "description": "Страна проведения мероприятия",
+                                        "type": "string"
+                                    },
+                                    "event_city": {
+                                        "description": "Город проведения мероприятия",
+                                        "type": "string"
+                                    },
+                                    "gender": {
+                                        "description": "Пол",
+                                        "type": "string",
+                                        "enum": [
+                                            "male",
+                                            "female",
+                                            "other"
+                                        ]
+                                    },
+                                    "avatar": {
+                                        "description": "Аватар",
+                                        "type": "file",
+                                        "format": "binary"
+                                    },
+                                    "telegram_policy": {
+                                        "description": "Согласие на использование Telegram",
+                                        "type": "string",
+                                        "enum": [
+                                            "for-referral",
+                                            "hidden",
+                                            "public"
+                                        ]
+                                    },
+                                    "security_question": {
+                                        "description": "Заданный вопрос безопасности",
+                                        "type": "string"
+                                    },
+                                    "security_answer": {
+                                        "description": "Ответ на заданный вопрос безопасности",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/User"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/me": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "getMe",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/personal-link": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Персональная ссылка.",
+                "operationId": "87de852b759ab51d49030c01e135a1cc",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/profile/statuses-and-founders": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Карьерный план и статусы",
+                "operationId": "461343dc802cd9e75f20738a44a4c21c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Round": {
+                "title": "Round",
+                "description": "Раунд (круг)",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "account_id": {
+                        "title": "account_id",
+                        "description": "account_id",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "round_type_id": {
+                        "title": "round_type_id",
+                        "description": "round_type_id",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "active": {
+                        "title": "active",
+                        "description": "active",
+                        "format": "boolean",
+                        "example": true
+                    },
+                    "verification_code": {
+                        "title": "verification_code",
+                        "description": "verification_code",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "price",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "description": "дата создания записи",
+                        "format": "date",
+                        "example": "2019-05-17"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "дата изменения записи",
+                        "format": "date",
+                        "example": "2019-05-17"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Round"
+                }
+            },
+            "RoundGiver": {
+                "title": "RoundGiver",
+                "description": "Даритель раунда",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status_id",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "account_id": {
+                        "title": "account_id",
+                        "description": "account_id",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "start": {
+                        "title": "start",
+                        "description": "время когда появился даритель",
+                        "format": "date",
+                        "example": "2019-05-17"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "RoundGiver"
+                }
+            },
+            "RoundGiverStatus": {
+                "title": "RoundGiverStatus",
+                "description": "Статус дарителя в раунде",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "title",
+                        "format": "string",
+                        "example": "test"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "RoundGiverStatus"
+                }
+            },
+            "RoundType": {
+                "title": "RoundType",
+                "description": "Тип раунда",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "price",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "count_rounds": {
+                        "title": "count_rounds",
+                        "description": "count_rounds",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "count_givers": {
+                        "title": "count_givers",
+                        "description": "count_givers",
+                        "format": "int64",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "RoundType"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "description": "User ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "login": {
+                        "description": "User's login",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "User's email address",
+                        "type": "string",
+                        "format": "email"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "UserAccountRole": {
+                "title": "UserAccountRole",
+                "description": "Роль у пользователя в аккаунте",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "title",
+                        "format": "string",
+                        "example": "test"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserAccountRole"
+                }
+            },
+            "UserRole": {
+                "title": "UserRole",
+                "description": "Роль пользователя",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "title",
+                        "format": "string",
+                        "example": "test"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserRole"
+                }
+            },
+            "UserStatus": {
+                "title": "UserStatus",
+                "description": "Статус пользователя",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "title",
+                        "format": "string",
+                        "example": "test"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserStatus"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "Пользователь"
+        },
+        {
+            "name": "User.Profile",
+            "description": "Настройки профиля"
+        }
+    ]
+}
