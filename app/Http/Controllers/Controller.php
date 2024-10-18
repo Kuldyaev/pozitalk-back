@@ -44,6 +44,7 @@ use OpenApi\Attributes\Tag;
 
 #[Tag(name: "Authentification", description: "Аутентификация пользователя")]
 #[Tag(name: "Knowledge", description: "База знаний")]
+#[Tag(name: "Events", description: "База знаний")]
 #[Tag(name: "User", description: "Пользователь")]
 #[Tag(name: "User.Profile", description: "Настройки профиля")]
 
