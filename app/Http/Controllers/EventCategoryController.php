@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\EventCategory;
+use App\Http\Requests\EventCategoryRequest;
+use App\Queries\EventCategoryBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes\Get;
@@ -55,9 +57,12 @@ class EventCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(EventCategoryRequest $request, EventCategoryBuilder $builder)
     {
         //
+        $event_category = $request->validated();
+
+        $categorycreated = $builder->create($event_category);
     }
 
     /**
