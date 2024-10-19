@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('date_publish', 12);
             $table->boolean('age16_restriction');
             $table->boolean('age18_restriction');
+            $table->integer('reading_time');
             $table->timestamps();
         });
     }

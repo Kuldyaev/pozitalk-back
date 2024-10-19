@@ -13,6 +13,32 @@
     ],
     "paths": {
         "/api/v1/": {},
+        "/events/categories": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getAllEventsCategory",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EventCategory"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/knowledges": {
             "get": {
                 "tags": [
@@ -189,6 +215,25 @@
     },
     "components": {
         "schemas": {
+            "EventCategory": {
+                "title": "Knowledge",
+                "description": "Knowledge model",
+                "properties": {
+                    "id": {
+                        "description": "EventCategoty ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "event_category": {
+                        "description": "Name of EventCategoty",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Knowledge"
+                }
+            },
             "Knowledge": {
                 "title": "Knowledge",
                 "description": "Knowledge model",
@@ -237,6 +282,10 @@
                     "age18_restriction": {
                         "description": "18+",
                         "type": "boolean"
+                    },
+                    "reading_time": {
+                        "description": "time for reading",
+                        "type": "integer"
                     }
                 },
                 "type": "object",
@@ -345,6 +394,10 @@
     "tags": [
         {
             "name": "Knowledge",
+            "description": "База знаний"
+        },
+        {
+            "name": "Events",
             "description": "База знаний"
         },
         {

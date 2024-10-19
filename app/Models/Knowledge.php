@@ -68,6 +68,11 @@ use Illuminate\Database\Eloquent\Model;
  *         type="boolean",
  *         description="18+"
  *     ),
+ *     @OA\Property(
+ *         property="reading_time",
+ *         type="integer",
+ *         description="time for reading"
+ *     ),
  * )
  *  * @mixin \Illuminate\Database\Eloquent\Model
  *
@@ -88,6 +93,7 @@ class Knowledge extends Model
         'time_publish',
         'date_publish',
         'age16_restriction',
-        'age18_restriction'
+        'age18_restriction',
+        'reading_time'
     ];
 }

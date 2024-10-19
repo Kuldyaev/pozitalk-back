@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         
          $this->call(KnowledgesSeeder::class);
          $this->call(EventCategorySeeder::class);
+         $this->call(MessagesSeeder::class);
          // \App\Models\User::factory(10)->create();
     }
 }
