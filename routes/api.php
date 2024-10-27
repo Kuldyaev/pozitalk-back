@@ -30,6 +30,9 @@ Route::group(['middleware' => 'api','prefix' => 'user'], function () {
 });
 
 Route::get('applications', [ApplicationController::class, 'index']);
+Route::apiResource('applications', AdminRecipeController::class)->only([
+            'destroy', 'update', 'store'
+        ]);
 Route::get('messages', [MessageController::class, 'index']);
 Route::resource('knowledges', KnowledgeController::class);
 Route::get('events/categories', [EventCategoryController::class, 'index']);
