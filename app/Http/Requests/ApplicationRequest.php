@@ -32,6 +32,7 @@ class ApplicationRequest extends FormRequest
             "email" => "required|string|min:8|max:120",
             "rate_hour" => "required|integer",
             "iswoman" => "required|boolean",
+            "avatar" => "text",
             "education" => "required|string|min:3|max:150",          
         ];
     }
