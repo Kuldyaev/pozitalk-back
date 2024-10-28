@@ -33,8 +33,7 @@ class ApplicationRequest extends FormRequest
             "rate_hour" => "required|integer",
             "iswoman" => "required|boolean",
             "avatar" => "required",
-
-            
+            "education" => "required|string|min:3|max:150",          
         ];
     }
 }
