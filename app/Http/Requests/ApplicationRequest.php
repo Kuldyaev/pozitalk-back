@@ -25,6 +25,16 @@ class ApplicationRequest extends FormRequest
     {
         return [
             "name" => "required|string|min:3|max:150",
+            "surname" => "required|string|min:3|max:150",
+            "lastname" => "required|string|min:3|max:150",
+            "birth_date," => "required|string|min:3|max:15",
+            "phone_number" => "required|string|min:8|max:11",
+            "email" => "required|string|min:8|max:120",
+            "rate_hour" => "required|integer",
+            "iswoman" => "required|boolean",
+            "avatar" => "required|text",
+
+            
         ];
     }
 }
