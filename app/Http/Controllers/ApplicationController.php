@@ -31,7 +31,14 @@ class ApplicationController extends Controller
         $applicationOne = $builder->create($application);
 
         if ( $applicationOne) {
-            return response('success');
+            return response('create success');
+        }
+    }
+
+    public function destroy(ApplicationBuilder $builder, Application $application)
+    {
+        if ($builder->delete($application)) {
+            return response('delete success');
         }
     }
 

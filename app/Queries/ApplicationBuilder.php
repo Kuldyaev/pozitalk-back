@@ -47,8 +47,8 @@ final class ApplicationBuilder
     //     return $allergen->fill($data)->save();
     // }
 
-    // public function delete(Allergen $allergen)
-    // {
-    //     return $allergen->delete();
-    // }
+    public function delete(Application $application)
+    {
+        return $application->delete();
+    }
 }
