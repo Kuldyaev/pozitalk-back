@@ -30,7 +30,7 @@ Route::group(['middleware' => 'api','prefix' => 'user'], function () {
 });
 
 Route::get('applications', [ApplicationController::class, 'index']);
-Route::apiResource('applications', AdminRecipeController::class)->only([
+Route::apiResource('applications', ApplicationController::class)->only([
             'destroy', 'update', 'store'
         ]);
 Route::get('messages', [MessageController::class, 'index']);
