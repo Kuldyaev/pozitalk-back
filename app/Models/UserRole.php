@@ -31,13 +31,18 @@ class UserRole extends Model
 
     /**
      * @OA\Property(
-     *     title="title",
-     *     description="title",
+     *     title="role",
+     *     description="role",
      *     format="string",
-     *     example="test"
+     *     example="admin"
      * )
      */
-    private $title;
+    private $role;
 
     public $timestamps = false;
+
+     public function users()
+    {
+        return $this->hasMany(User::class, 'usersrole_id');
+    }
 }

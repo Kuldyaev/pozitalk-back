@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
          $this->call(EventCategorySeeder::class);
          $this->call(MessagesSeeder::class);
          $this->call(ApplicationSeeder::class);
+         $this->call(UsersRoleTableSeeder::class);
+         $this->call(UsersSeeder::class);
          // \App\Models\User::factory(10)->create();
     }
 }

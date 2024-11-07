@@ -7,7 +7,8 @@ use App\Http\Controllers\Knowledge\KnowledgeController;
 use App\Http\Controllers\EventCategoryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ApplicationController;
-use App\Http\Controllers\V1\AuthController;
+use App\Http\Controllers\API\AuthController2;
+use App\Http\Controllers\PhoneVerificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,14 +20,17 @@ use App\Http\Controllers\V1\AuthController;
 |
 */
 
-
+Route::post('/phone-verification', [PhoneVerificationController::class, 'store']);
 Route::group(['middleware' => 'api','prefix' => 'user'], function () {
-
      Route::get('/me', [UserController::class, 'me'])->name('user.me');
-    
+});
 
 
-
+Route::prefix('auth')->middleware('api')->controller(AuthController2::class)->group(function(){
+    Route::post('login', 'login');
+    Route::post('user', 'user');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
 });
 
 Route::get('applications', [ApplicationController::class, 'index']);
@@ -37,6 +41,7 @@ Route::get('messages', [MessageController::class, 'index']);
 Route::resource('knowledges', KnowledgeController::class);
 Route::get('events/categories', [EventCategoryController::class, 'index']);
 Route::post('events/categories', [EventCategoryController::class, 'create']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

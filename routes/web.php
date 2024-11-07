@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return 200;
 });
+
+Route::get('/login', function () {
+    return 200;
+})->name('login');

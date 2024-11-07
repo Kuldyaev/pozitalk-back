@@ -29,15 +29,26 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  *         description="User ID"
  *     ),
  *     @OA\Property(
- *         property="login",
+ *         property="name",
  *         type="string",
- *         description="User's login"
+ *         description="User's name"
+ *     ),
+  *     @OA\Property(
+ *         property="familyname",
+ *         type="string",
+ *         description="User's familyname"
  *     ),
  *     @OA\Property(
- *         property="email",
+ *         property="phone",
  *         type="string",
  *         format="email",
- *         description="User's email address"
+ *         description="User's phone number"
+ *     ),
+ *     @OA\Property(
+ *         property="avatar",
+ *         type="string",
+ *         format="base64",
+ *         description="avatar in base64"
  *     ),
  * )
  * @mixin \Illuminate\Database\Eloquent\Model
@@ -50,15 +61,23 @@ class User extends Authenticatable implements JWTSubject
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'login',
-        'email',
+        'phone',
+        'name',
+        'familyname',
+        'avatar',
+        'usersrole_id',
+
     ];
 
+
+    public function role()
+    {
+        return $this->belongsTo(UserRole::class, 'usersrole_id');
+    }
 
     protected $hidden = [
         'code',
-        'password',
-    ];
+      ];
 
         // Показывает список всех пользователей
 

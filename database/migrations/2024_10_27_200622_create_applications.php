@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name', 200);
             $table->string('surname', 200);
             $table->string('lastname', 200);
-            $table->string('birth_date', 15);
+            $table->date('birth_date');
             $table->string('phone_number', 15);
             $table->string('email', 200);
             $table->string('education', 250);
