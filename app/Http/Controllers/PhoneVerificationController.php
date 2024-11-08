@@ -28,7 +28,7 @@ class PhoneVerificationController extends Controller
             // Если записи нет, создаем новую
             $verification = new PhoneVerification();
             $verification->phone = $request->input('phone');
-            $verification->code = mt_rand(10000, 99999); // Генерация случайного пятизначного кода
+            $verification->code = mt_rand(100000, 999999); // Генерация случайного пятизначного кода
             $verification->valid_until = Carbon::now()->addMinutes(3);
             $verification->save();
         }

@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
   *     @OA\Property(
  *         property="code",
  *         type="integer",
- *         description="пятизначный цифровой код"
+ *         description="шестизначный цифровой код"
  *     ),
  *     @OA\Property(
  *         property="valid_until",
