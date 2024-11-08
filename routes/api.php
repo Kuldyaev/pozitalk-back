@@ -21,6 +21,7 @@ use App\Http\Controllers\PhoneVerificationController;
 */
 
 Route::post('/phone-verification', [PhoneVerificationController::class, 'store']);
+Route::post('/phone-code-check', [PhoneVerificationController::class, 'verify']);
 Route::group(['middleware' => 'api','prefix' => 'user'], function () {
      Route::get('/me', [UserController::class, 'me'])->name('user.me');
 });

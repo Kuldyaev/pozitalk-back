@@ -46,7 +46,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  *     ),
  *     @OA\Property(
  *         property="avatar",
- *         type="string",
+ *         type="text",
  *         format="base64",
  *         description="avatar in base64"
  *     ),

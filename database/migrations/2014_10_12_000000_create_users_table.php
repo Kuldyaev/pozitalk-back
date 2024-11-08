@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('familyname');
             $table->string('phone')->unique();
-            $table->string('avatar')->nullable();
+            $table->text('avatar')->nullable();
             $table->foreignId('usersrole_id')->constrained('usersrole')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
